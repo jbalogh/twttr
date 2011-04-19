@@ -1,0 +1,4 @@
+django
+python-twitter
+ipython
+mysql-python
