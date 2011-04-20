@@ -1,0 +1,32 @@
+{% load twttr %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}twttr{% endblock %}</title>
+  </head>
+  <body>
+    <header><h1>twttr</h1></header>
+    {% block header %}{% endblock %}
+    {% if tweets %}
+    <ol id="tweets">
+      {% for tweet in tweets %}
+        <li>
+          <section class="tweet">
+            <a href="{{ tweet.user.get_absolute_url }}">
+              <img src="{{ tweet.user.avatar_url }}"></a>
+            <a href="{{ tweet.user.get_absolute_url }}">{{ tweet.user.name }}</a>
+            <span class="text">{{ tweet.text|twttrize }}</span>
+            <footer>
+            <a href="{{ tweet.get_absolute_url }}">
+              <time datetime="{# TODO #}">{{ tweet.created|timesince }} ago</time></a>
+              <span class="via">via {{ tweet.source|safe }}</span>
+            </footer>
+          </section>
+        </li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+  </body>
+</html>
+

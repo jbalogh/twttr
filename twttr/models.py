@@ -14,6 +14,10 @@ class User(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.id, self.screen_name)
 
+    @models.permalink
+    def get_absolute_url(self):
+        return 'twttr.user', [self.screen_name]
+
 
 class Tweet(models.Model):
     id = models.CharField(max_length=255, primary_key=True)
@@ -24,3 +28,7 @@ class Tweet(models.Model):
 
     class Meta:
         db_table = 'tweets'
+
+    @models.permalink
+    def get_absolute_url(self):
+        return 'twttr.tweet', [self.user.screen_name, self.id]
