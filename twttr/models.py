@@ -22,7 +22,7 @@ class User(models.Model):
 class Tweet(models.Model):
     id = models.CharField(max_length=255, primary_key=True)
     user = models.ForeignKey(User, related_name='tweets')
-    created = models.DateTimeField()
+    created = models.DateTimeField(db_index=True)
     source = models.CharField(max_length=255)
     text = models.CharField(max_length=255)
 
