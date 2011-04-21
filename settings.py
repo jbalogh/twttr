@@ -48,6 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'camelot.urls'
@@ -55,6 +56,7 @@ ROOT_URLCONF = 'camelot.urls'
 INSTALLED_APPS = (
     'twttr',
     'gunicorn',
+    'debug_toolbar',
     'django.contrib.staticfiles',
 )
 
@@ -92,3 +94,7 @@ try:
     from settings_local import *
 except ImportError:
     pass
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda r: True,
+}
