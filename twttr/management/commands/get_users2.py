@@ -1,5 +1,6 @@
 from datetime import datetime
 import logging
+import random
 import time
 
 from django.conf import settings
@@ -83,5 +84,6 @@ class Command(BaseCommand):
         all_user_ids = set(r[0] for r in result)
         log.info('%s users so far.' % len(all_user_ids))
 
-        users = User.objects.filter(name__isnull=True).order_by('?')[:100]
+        ids = random.sample(all_user_ids, 200)
+        users = User.objects.filter(id__in=ids, name__isnull=True)[:100]
         fill(users, all_user_ids)

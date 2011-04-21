@@ -1,5 +1,6 @@
 from datetime import datetime
 import logging
+import random
 import time
 
 from django.core.management.base import BaseCommand
@@ -33,7 +34,8 @@ class Command(BaseCommand):
         all_user_ids = set(User.objects.values_list('id', flat=True))
         log.info('%s users so far.' % len(all_user_ids))
 
-        for user in User.objects.filter(name__isnull=True).order_by('?')[:150]:
+        ids = random.sample(all_user_ids, 300)
+        for user in User.objects.filter(id__in=ids, name__isnull=True)[:150]:
 
             try:
                 timeline = api.GetUserTimeline(id=user.id, count=200)
