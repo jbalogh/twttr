@@ -54,6 +54,7 @@ ROOT_URLCONF = 'camelot.urls'
 
 INSTALLED_APPS = (
     'twttr',
+    'gunicorn',
     'django.contrib.staticfiles',
 )
 
