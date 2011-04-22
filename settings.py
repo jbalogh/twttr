@@ -44,6 +44,7 @@ SECRET_KEY = ')hz46&+c9-p6h_r6*fbgx36#u6*75r$q@^pr6v%_2dqlm1-v4n'
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    'twttr.middleware.StatsdMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
