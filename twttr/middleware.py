@@ -8,8 +8,11 @@ from statsd import statsd
 class StatsdMiddleware:
 
     def process_request(self, request):
-        request._start = time.time()
-        request._name = resolve(request.path).url_name
+        try:
+            request._start = time.time()
+            request._name = resolve(request.path).url_name
+        except Exception:
+            pass
 
     def process_response(self, request, response):
         statsd.incr('http.200')
