@@ -17,3 +17,9 @@ def user(request, username):
 def tweet(request, username, id):
     tweet = get_object_or_404(Tweet, user__screen_name=username, id=id)
     return render(request, 'twttr/base.html', {'tweets': [tweet]})
+
+
+def timeline(request, username):
+    tweets = (Tweet.objects.filter(user__friends__screen_name=username)
+              .order_by('-created'))[:30]
+    return render(request, 'twttr/base.html', {'tweets': tweets})
