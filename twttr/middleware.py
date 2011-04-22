@@ -13,11 +13,13 @@ class StatsdMiddleware:
 
     def process_response(self, request, response):
         statsd.incr('http.200')
-        statsd.timing(request._name,
-                      int(1000 * (time.time() - request._start)))
+        if hasattr(request, '_name'):
+            statsd.timing(request._name,
+                          int(1000 * (time.time() - request._start)))
         return response
 
     def process_exception(self, request, exc):
         statsd.incr('http.500')
-        statsd.timing(request._name,
-                      int(1000 * (time.time() - request._start)))
+        if hasattr(request, '_name'):
+            statsd.timing(request._name,
+                          int(1000 * (time.time() - request._start)))
