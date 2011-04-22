@@ -4,3 +4,4 @@ ipython
 mysql-python
 gunicorn
 -e git://github.com/robhudson/django-debug-toolbar.git#egg=django-debug-toolbar
+statsd

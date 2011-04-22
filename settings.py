@@ -5,7 +5,7 @@ TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql2',
         'NAME': 'camelot',
         'USER': '',
         'PASSWORD': '',
@@ -98,3 +98,6 @@ except ImportError:
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda r: True,
 }
+
+STATSD_HOST = '10.118.13.206'
+STATSD_PORT = 8125
