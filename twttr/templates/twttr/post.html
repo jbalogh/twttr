@@ -1,0 +1,10 @@
+{% extends "twttr/base.html" %}
+
+{% block body %}
+<h2>New tweet from {{ username }}</h2>
+<form method="post" action="{% url twttr.post username %}">
+  {% csrf_token %}
+  <textarea rows="3" cols="50" name="tweet"></textarea>
+  <input type="submit" value="TWEET ME">
+</form>
+{% endblock %}
