@@ -91,11 +91,6 @@ LOGGING = {
     },
 }
 
-try:
-    from settings_local import *
-except ImportError:
-    pass
-
 DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TOOLBAR_CALLBACK': lambda r: True,
 }
@@ -104,3 +99,8 @@ STATSD_HOST = '10.118.13.206'
 STATSD_PORT = 8125
 
 DATABASE_ROUTERS = ['router.MasterSlaveRouter']
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
