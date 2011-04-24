@@ -6,7 +6,7 @@ from .models import User, Tweet
 
 
 def home(request):
-    tweets = Tweet.objects.order_by('-created')[:30]
+    tweets = Tweet.objects.order_by('-created').select_related('user')[:30]
     return render(request, 'twttr/base.html', {'tweets': tweets})
 
 
