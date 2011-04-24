@@ -32,9 +32,5 @@ DATABASES = {
 }
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda r: False,
+    'SHOW_TOOLBAR_CALLBACK': lambda r: True,
 }
-
-DEBUG = TEMPLATE_DEBUG = False
-
-WOO=1
