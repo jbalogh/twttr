@@ -11,8 +11,8 @@ def home(request):
 
 
 def user(request, username):
-    tweets = (Tweet.objects.filter(user__screen_name=username)
-              .order_by('-created'))[:30]
+    user_ = User.objects.get(screen_name=username)
+    tweets = (Tweet.objects.filter(user_id=user_.id).order_by('-created'))[:30]
     return render(request, 'twttr/base.html', {'tweets': tweets})
 
 
